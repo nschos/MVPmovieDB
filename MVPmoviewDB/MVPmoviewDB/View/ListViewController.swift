@@ -10,11 +10,15 @@ import UIKit
 
 
 class ListViewController: UIViewController {
-    
     private var presenter: MoviePresenter
+    var tableView: UITableView
+    var searchController: UISearchController
     
     init(presenter: MoviePresenter = MoviePresenter()) {
         self.presenter = presenter
+        self.tableView = UITableView()
+        self.searchController = UISearchController()
+        
         super.init(nibName: nil, bundle: nil)
         
         presenter.delegate = self
@@ -26,11 +30,48 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         presenter.viewDidLoad()
-        view.backgroundColor = .red
         
+        self.title = "Movies"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        setupSearchController()
     }
+    
+    func setupSearchController() {
+    searchController = UISearchController(searchResultsController: nil)
+    searchController.searchResultsUpdater = self
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.placeholder = "Search Movies"
+    navigationItem.searchController = searchController
+    definesPresentationContext = true
+    }
+    
 }
+//
+//extension ListViewController: UITableViewDelegate {
+//    
+//}
+
+extension ListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        tableView.reloadData()
+    }
+    
+}
+
+//extension ListViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//    }
+//    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//    }
+//    
+//    
+//}
 
 extension ListViewController: MoviePresenterDelegate {
     func updateUI() {
