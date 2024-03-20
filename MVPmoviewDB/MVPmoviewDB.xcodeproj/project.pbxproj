@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC4C7F822BAB5DC400A6361E /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C7F812BAB5DC400A6361E /* MovieTableViewCell.swift */; };
 		DC69A2272BA9FDF700A47491 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69A2262BA9FDF700A47491 /* Movie.swift */; };
 		DC69A2292BA9FE2400A47491 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69A2282BA9FE2400A47491 /* Repository.swift */; };
 		DC69A22B2BAA00A400A47491 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69A22A2BAA00A400A47491 /* Presenter.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC4C7F812BAB5DC400A6361E /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		DC69A2262BA9FDF700A47491 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		DC69A2282BA9FE2400A47491 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		DC69A22A2BAA00A400A47491 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				DC69A22C2BAA043000A47491 /* ListViewController.swift */,
 				DC69A22E2BAA044100A47491 /* MovieDetailViewController.swift */,
+				DC4C7F812BAB5DC400A6361E /* MovieTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				DC69A22B2BAA00A400A47491 /* Presenter.swift in Sources */,
 				DCF00E142BA8D86F00B213A9 /* ViewController.swift in Sources */,
+				DC4C7F822BAB5DC400A6361E /* MovieTableViewCell.swift in Sources */,
 				DCF00E102BA8D86F00B213A9 /* AppDelegate.swift in Sources */,
 				DC69A2292BA9FE2400A47491 /* Repository.swift in Sources */,
 				DC69A22F2BAA044100A47491 /* MovieDetailViewController.swift in Sources */,
