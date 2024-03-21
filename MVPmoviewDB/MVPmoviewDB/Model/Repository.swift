@@ -54,7 +54,19 @@ class APIMovieRepository: MovieRepository {
         .resume()
     }
 
-    
+    static func decodeByProtocols(data: Data) -> MovieResponse? {
+        do {
+            let decodedResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
+            return decodedResponse
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+}
+
+// get functions
+extension APIMovieRepository {
     func getImage(urlPath: String, completionBlock: @escaping (UIImage?, String) -> Void) {
         let urlString = "https://image.tmdb.org/t/p/w500\(urlPath)"
         guard let url = URL(string: urlString) else {
@@ -84,16 +96,6 @@ class APIMovieRepository: MovieRepository {
         .resume()
     }
     
-    static func decodeByProtocols(data: Data) -> MovieResponse? {
-        do {
-            let decodedResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
-            return decodedResponse
-        } catch {
-            print(error)
-        }
-        return nil
-    }
-    
     func getNumberOfSections() -> Int {
         return Endpoint.allCases.count
     }
@@ -106,16 +108,19 @@ class APIMovieRepository: MovieRepository {
         return endpoint == .nowPlaying ? moviesNowPlaying[indexOf].title : moviesPopular[indexOf].title
     }
     
-    func getDescriptionOfMovie(indexOf: Int, endpoint: Endpoint) -> String {
-        return endpoint == .nowPlaying ? moviesNowPlaying[indexOf].description : moviesPopular[indexOf].description
-    }
-    
     func getOverviewOfMovie(indexOf: Int, endpoint: Endpoint) -> String {
         return endpoint == .nowPlaying ? moviesNowPlaying[indexOf].overview : moviesPopular[indexOf].overview
+    }
+    
+    func getVoteAverageOfMovie(indexOf: Int, endpoint: Endpoint) -> Double {
+        return endpoint == .nowPlaying ? moviesNowPlaying[indexOf].voteAverage : moviesPopular[indexOf].voteAverage
     }
     
     func getImageOfMovie(indexOf: Int, endpoint: Endpoint) -> Data? {
         return endpoint == .nowPlaying ? moviesNowPlaying[indexOf].imageCover : moviesPopular[indexOf].imageCover
     }
     
+    func getPosterPathOfMovie(indexOf: Int, endpoint: Endpoint) -> String {
+        return endpoint == .nowPlaying ? moviesNowPlaying[indexOf].posterPath : moviesPopular[indexOf].posterPath
+    }
 }

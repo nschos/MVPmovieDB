@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 class ListViewController: UIViewController {
     private var presenter: MoviePresenter
     var scrollView: UIScrollView
@@ -20,9 +19,7 @@ class ListViewController: UIViewController {
         self.searchController = UISearchController()
         self.tableView = UITableView()
         self.scrollView = UIScrollView()
-
         super.init(nibName: nil, bundle: nil)
-    
         presenter.delegate = self
     }
     
@@ -34,10 +31,8 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         presenter.viewDidLoad()
-        
         self.title = "Movies"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         setupSearchController()
     }
 }
@@ -48,7 +43,6 @@ extension ListViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
     
-    
     func setupSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -58,7 +52,6 @@ extension ListViewController: UISearchResultsUpdating {
         definesPresentationContext = true
     }
 }
-
 
 extension ListViewController: UITableViewDelegate {
     
@@ -80,12 +73,13 @@ extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier, for: indexPath) as! MovieTableViewCell
         
-        let listViewControllerModel = presenter.makeListViewControllerModel(for: indexPath.row, section: indexPath.section)
+        let listViewControllerModel = presenter.makeListViewControllerModel(indexPath: indexPath, for: indexPath.row, section: indexPath.section)
         
         cell.titleLabel.text = listViewControllerModel.title
-        cell.descriptionLabel.text = listViewControllerModel.description
         cell.overviewLabel.text = listViewControllerModel.overview
-
+        cell.voteAverage.text = listViewControllerModel.voteAverage
+        cell.image.image = UIImage(data: listViewControllerModel.imageCover ?? Data())
+        
         return cell
     }
 }
@@ -96,31 +90,29 @@ extension ListViewController: MoviePresenterDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.identifier)
-        
         view.addSubview(tableView)
-
-
-        
+    }
+    
+    func updateUI(atIndex indexPath: IndexPath) {
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
 
 private extension MoviePresenter {
+    typealias ListViewControllerModel = (title: String, overview: String, voteAverage: String, imageCover: Data?)
     
-    typealias ListViewControllerModel = (title: String, description: String, overview: String, imageCover: Data?)
-    
-    func makeListViewControllerModel(for index: Int, section: Int) -> ListViewControllerModel {
+    func makeListViewControllerModel(indexPath: IndexPath, for index: Int, section: Int) -> ListViewControllerModel {
         let title = getTitleLabel(indexOf: index, section: section)
-        let description = getDescriptionLabel(indexOf: index, section: section)
         let overview = getOverviewLabel(indexOf: index, section: section)
-        let imageCover = getImage(indexOf: index, section: section)
+        let voteAverage = getVoteAverageLabel(indexOf: index, section: section)
+        let imageCover = getImage(indexPath: indexPath, indexOf: index, section: section)
         
         let listViewControllerModel = ListViewControllerModel(title: title,
-                                                              description: description,
                                                               overview: overview,
+                                                              voteAverage: voteAverage,
                                                               imageCover: imageCover)
         
         return listViewControllerModel
     }
-    
 }
 

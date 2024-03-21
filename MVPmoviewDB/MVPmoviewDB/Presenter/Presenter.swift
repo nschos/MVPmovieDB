@@ -10,15 +10,16 @@ import UIKit
 
 protocol MoviePresenterDelegate: AnyObject {
     func setupUI()
+    func updateUI(atIndex indexPath: IndexPath)
 }
 
 extension Endpoint {
     init(section: Int) {
         switch section {
         case 0:
-            self = .nowPlaying
-        case 1:
             self = .popular
+        case 1:
+            self = .nowPlaying
         default:
             self = .popular
         }
@@ -35,7 +36,6 @@ extension Endpoint {
 }
 
 class MoviePresenter {
-    
     let repository: APIMovieRepository = APIMovieRepository.shared
     weak var delegate: MoviePresenterDelegate?
     
@@ -82,15 +82,47 @@ class MoviePresenter {
         return repository.getTitleOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
     }
     
-    func getDescriptionLabel(indexOf: Int, section: Int) -> String {
-        return repository.getDescriptionOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
-    }
-    
     func getOverviewLabel(indexOf: Int, section: Int) -> String {
         return repository.getOverviewOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
     }
     
-    func getImage(indexOf: Int, section: Int) -> Data? {
+    func getVoteAverageLabel(indexOf: Int, section: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+
+        if let formattedString = formatter.string(from: NSNumber(value: repository.getVoteAverageOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section)))) {
+            return formattedString
+        } else {
+            return "\(repository.getVoteAverageOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section)))"
+        }
+    }
+    
+    func getImage(indexPath: IndexPath, indexOf: Int, section: Int) -> Data? {
+        let image = repository.getImageOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
+        
+        if let imageData = image {
+            return imageData
+        } else {
+            repository.getImage(urlPath: repository.getPosterPathOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))) { image, urlString in
+                if Endpoint(section: section) == .nowPlaying {
+                    guard let movieIndex = self.repository.moviesNowPlaying.firstIndex(where: { $0.posterPath == urlString }) else { return }
+                    self.repository.moviesNowPlaying[movieIndex].imageCover = image?.pngData()
+                    DispatchQueue.main.async {
+                        self.delegate?.updateUI(atIndex: indexPath)
+                    }
+                } else {
+                    guard let movieIndex = self.repository.moviesPopular.firstIndex(where: { $0.posterPath == urlString }) else { return }
+                    self.repository.moviesPopular[movieIndex].imageCover = image?.pngData()
+                    DispatchQueue.main.async {
+                        self.delegate?.updateUI(atIndex: indexPath)
+                    }
+                }
+            }
+        }
+        
+
         return repository.getImageOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
     }
 }

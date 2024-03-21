@@ -48,17 +48,10 @@
 		DC69A2212BA9FCFD00A47491 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DC69A2282BA9FE2400A47491 /* Repository.swift */,
 				DC69A2262BA9FDF700A47491 /* Movie.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		DC69A2222BA9FD0400A47491 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				DC69A2282BA9FE2400A47491 /* Repository.swift */,
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		DC69A2232BA9FD1000A47491 /* View */ = {
@@ -111,7 +104,6 @@
 				DC69A2252BA9FD7A00A47491 /* App */,
 				DC69A2242BA9FD1C00A47491 /* Presenter */,
 				DC69A2232BA9FD1000A47491 /* View */,
-				DC69A2222BA9FD0400A47491 /* Repository */,
 				DC69A2212BA9FCFD00A47491 /* Model */,
 				DCF00E182BA8D87000B213A9 /* Assets.xcassets */,
 				DCF00E1D2BA8D87100B213A9 /* Info.plist */,

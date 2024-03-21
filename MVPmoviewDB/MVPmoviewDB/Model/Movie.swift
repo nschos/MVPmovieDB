@@ -13,7 +13,6 @@ struct MovieResponse: Decodable {
 }
 
 struct Movie: Decodable {
-
     var id: Int
     var title: String
     var overview: String

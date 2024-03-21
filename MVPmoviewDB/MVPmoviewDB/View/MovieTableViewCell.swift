@@ -12,8 +12,9 @@ class MovieTableViewCell: UITableViewCell {
     // Custom identifier
     static let identifier = "MovieTableViewCellIdentifier"
     let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
     let overviewLabel = UILabel()
+    let voteAverage = UILabel()
+    let image = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
