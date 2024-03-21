@@ -38,6 +38,8 @@ extension Endpoint {
 class MoviePresenter {
     let repository: APIMovieRepository = APIMovieRepository.shared
     weak var delegate: MoviePresenterDelegate?
+
+    var coordinator: CoordinatorFlowController?
     
     func viewDidLoad() {
         var finishedNowPlaying = false
@@ -124,5 +126,9 @@ class MoviePresenter {
         
 
         return repository.getImageOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
+    }
+    
+    func didSelectRowAt(indexPath: IndexPath) {
+        coordinator?.goToDetail(indexPath: indexPath)
     }
 }

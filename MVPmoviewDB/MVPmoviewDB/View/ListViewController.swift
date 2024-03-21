@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 class ListViewController: UIViewController {
-    private var presenter: MoviePresenter
-    var scrollView: UIScrollView
+    var presenter: MoviePresenter
     var tableView: UITableView
     var searchController: UISearchController
     
@@ -18,7 +17,6 @@ class ListViewController: UIViewController {
         self.presenter = presenter
         self.searchController = UISearchController()
         self.tableView = UITableView()
-        self.scrollView = UIScrollView()
         super.init(nibName: nil, bundle: nil)
         presenter.delegate = self
     }
@@ -54,7 +52,10 @@ extension ListViewController: UISearchResultsUpdating {
 }
 
 extension ListViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter.didSelectRowAt(indexPath: indexPath)
+    }
 }
 
 extension ListViewController: UITableViewDataSource {
@@ -77,7 +78,7 @@ extension ListViewController: UITableViewDataSource {
         
         cell.titleLabel.text = listViewControllerModel.title
         cell.overviewLabel.text = listViewControllerModel.overview
-        cell.voteAverage.text = listViewControllerModel.voteAverage
+        cell.voteAverageLabel.text = "✩ " + listViewControllerModel.voteAverage
         cell.image.image = UIImage(data: listViewControllerModel.imageCover ?? Data())
         
         return cell
