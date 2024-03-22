@@ -88,6 +88,10 @@ class MoviePresenter {
         return repository.getOverviewOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
     }
     
+    func getTags(indexOf: Int, section: Int) -> String {
+        return repository.getTagsOfMovie(indexOf: indexOf, endpoint: Endpoint(section: section))
+    }
+    
     func getVoteAverageLabel(indexOf: Int, section: Int) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal

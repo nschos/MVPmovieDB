@@ -18,7 +18,8 @@ struct Movie: Decodable {
     var overview: String
     var voteAverage: Double
     var posterPath: String
-
+    var genreIds: [Int]
+    
     var imageCover: Data?
 
     var description: String {
@@ -31,6 +32,7 @@ struct Movie: Decodable {
         case overview
         case voteAverage = "vote_average"
         case posterPath = "poster_path"
+        case genreIds = "genre_ids"
         case imageCover
     }
 }

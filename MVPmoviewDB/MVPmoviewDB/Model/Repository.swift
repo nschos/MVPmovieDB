@@ -26,6 +26,26 @@ class APIMovieRepository: MovieRepository {
     var moviesNowPlaying: [Movie] = []
     var moviesPopular: [Movie] = []
     
+    private var dictGenres: [Int: String] = [28:"Action",
+                                             12:"Adventure",
+                                             16:"Animation",
+                                             35:"Comedy",
+                                             80:"Crime",
+                                             99:"Documentary",
+                                             18:"Drama",
+                                             10751:"Family",
+                                             14:"Fantasy", 
+                                             36:"History",
+                                             27:"Horror",
+                                             10402:"Music",
+                                             9648:"Mystery",
+                                             10749:"Romance",
+                                             878:"Science Fiction",
+                                             10770:"TV Movie",
+                                             53:"Thriller",
+                                             10752:"War",
+                                             37:"Western"]
+    
     func fetchMovies(endpoint: Endpoint, completion: @escaping (Bool) -> Void) {
         guard let url = URL(string: endpoint.rawValue) else { return }
         
@@ -123,4 +143,21 @@ extension APIMovieRepository {
     func getPosterPathOfMovie(indexOf: Int, endpoint: Endpoint) -> String {
         return endpoint == .nowPlaying ? moviesNowPlaying[indexOf].posterPath : moviesPopular[indexOf].posterPath
     }
+    
+    func getTagsOfMovie(indexOf: Int, endpoint: Endpoint) -> String {
+        return getGenresText(listId: endpoint == .nowPlaying ? moviesNowPlaying[indexOf].genreIds : moviesPopular[indexOf].genreIds)
+    }
+    
+    func getGenresText(listId: [Int]) -> String{
+        var list: [String] = []
+        
+        for id in listId{
+            list.append(dictGenres[id]!)
+        }
+        
+        let finalStr = list.joined(separator:", ")
+        
+        return finalStr
+    }
 }
+

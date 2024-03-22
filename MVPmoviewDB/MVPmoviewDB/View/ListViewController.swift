@@ -31,6 +31,7 @@ class ListViewController: UIViewController {
         presenter.viewDidLoad()
         self.title = "Movies"
         navigationController?.navigationBar.prefersLargeTitles = true
+
         setupSearchController()
     }
 }
