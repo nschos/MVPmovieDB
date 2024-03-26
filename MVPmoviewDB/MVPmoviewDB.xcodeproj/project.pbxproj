@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00EC42EE2BB2061B00E93A03 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EC42ED2BB2061B00E93A03 /* RepositoryTests.swift */; };
 		DC4C7F822BAB5DC400A6361E /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C7F812BAB5DC400A6361E /* MovieTableViewCell.swift */; };
 		DC69A2272BA9FDF700A47491 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69A2262BA9FDF700A47491 /* Movie.swift */; };
 		DC69A2292BA9FE2400A47491 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC69A2282BA9FE2400A47491 /* Repository.swift */; };
@@ -20,7 +21,19 @@
 		DCF00E192BA8D87000B213A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF00E182BA8D87000B213A9 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		00EC42EF2BB2061B00E93A03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCF00E042BA8D86F00B213A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCF00E0B2BA8D86F00B213A9;
+			remoteInfo = MVPmoviewDB;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		00EC42EB2BB2061B00E93A03 /* MVPmoviewDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MVPmoviewDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00EC42ED2BB2061B00E93A03 /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 		DC4C7F812BAB5DC400A6361E /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		DC69A2262BA9FDF700A47491 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		DC69A2282BA9FE2400A47491 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -37,6 +50,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00EC42E82BB2061B00E93A03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DCF00E092BA8D86F00B213A9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00EC42EC2BB2061B00E93A03 /* MVPmoviewDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				00EC42ED2BB2061B00E93A03 /* RepositoryTests.swift */,
+			);
+			path = MVPmoviewDBTests;
+			sourceTree = "<group>";
+		};
 		DC69A2212BA9FCFD00A47491 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				DCF00E0E2BA8D86F00B213A9 /* MVPmoviewDB */,
+				00EC42EC2BB2061B00E93A03 /* MVPmoviewDBTests */,
 				DCF00E0D2BA8D86F00B213A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				DCF00E0C2BA8D86F00B213A9 /* MVPmoviewDB.app */,
+				00EC42EB2BB2061B00E93A03 /* MVPmoviewDBTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +155,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		00EC42EA2BB2061B00E93A03 /* MVPmoviewDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00EC42F32BB2061B00E93A03 /* Build configuration list for PBXNativeTarget "MVPmoviewDBTests" */;
+			buildPhases = (
+				00EC42E72BB2061B00E93A03 /* Sources */,
+				00EC42E82BB2061B00E93A03 /* Frameworks */,
+				00EC42E92BB2061B00E93A03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00EC42F02BB2061B00E93A03 /* PBXTargetDependency */,
+			);
+			name = MVPmoviewDBTests;
+			productName = MVPmoviewDBTests;
+			productReference = 00EC42EB2BB2061B00E93A03 /* MVPmoviewDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DCF00E0B2BA8D86F00B213A9 /* MVPmoviewDB */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCF00E202BA8D87100B213A9 /* Build configuration list for PBXNativeTarget "MVPmoviewDB" */;
@@ -149,9 +197,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
+					00EC42EA2BB2061B00E93A03 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = DCF00E0B2BA8D86F00B213A9;
+					};
 					DCF00E0B2BA8D86F00B213A9 = {
 						CreatedOnToolsVersion = 15.2;
 					};
@@ -171,11 +223,19 @@
 			projectRoot = "";
 			targets = (
 				DCF00E0B2BA8D86F00B213A9 /* MVPmoviewDB */,
+				00EC42EA2BB2061B00E93A03 /* MVPmoviewDBTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		00EC42E92BB2061B00E93A03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DCF00E0A2BA8D86F00B213A9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,6 +247,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00EC42E72BB2061B00E93A03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00EC42EE2BB2061B00E93A03 /* RepositoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DCF00E082BA8D86F00B213A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -206,7 +274,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		00EC42F02BB2061B00E93A03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCF00E0B2BA8D86F00B213A9 /* MVPmoviewDB */;
+			targetProxy = 00EC42EF2BB2061B00E93A03 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		00EC42F12BB2061B00E93A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2GFP5XXD75;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nschos.MVPmoviewDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVPmoviewDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MVPmoviewDB";
+			};
+			name = Debug;
+		};
+		00EC42F22BB2061B00E93A03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2GFP5XXD75;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nschos.MVPmoviewDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVPmoviewDB.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MVPmoviewDB";
+			};
+			name = Release;
+		};
 		DCF00E1E2BA8D87100B213A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -385,6 +497,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		00EC42F32BB2061B00E93A03 /* Build configuration list for PBXNativeTarget "MVPmoviewDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00EC42F12BB2061B00E93A03 /* Debug */,
+				00EC42F22BB2061B00E93A03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DCF00E072BA8D86F00B213A9 /* Build configuration list for PBXProject "MVPmoviewDB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

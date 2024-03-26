@@ -21,7 +21,7 @@ protocol MovieRepository {
 class APIMovieRepository: MovieRepository {
     // Singleton - só consigo inicializar com o shared
     static let shared: APIMovieRepository = APIMovieRepository()
-    private init(){}
+    init(){}
     
     var moviesNowPlaying: [Movie] = []
     var moviesPopular: [Movie] = []
