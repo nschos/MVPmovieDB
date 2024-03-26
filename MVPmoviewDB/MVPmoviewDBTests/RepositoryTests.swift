@@ -56,6 +56,54 @@ final class RepositoryTests: XCTestCase {
         let endPointCount = Endpoint.allCases.count
         XCTAssertEqual(endPointCount, sut.getNumberOfSections())
     }
+    
+    func testGetNumberOfMovies() throws {
+        var sut: APIMovieRepository!
+        try super.setUpWithError()
+        sut = APIMovieRepository()
+        
+        print("1")
+        
+        sut.fetchMovies(endpoint: .popular) { isFinished in
+            print("2")
+            XCTAssertEqual(sut.moviesPopular.count, sut.getNumberOfMovies(endpoint: .popular))
+        }
+        
+        print("3")
+        
+        
+//        XCTAssertEqual(sut.moviesNowPlaying.count, sut.getNumberOfMovies(endpoint: .nowPlaying))
+    }
+    
+    
+    func testFetchMovies() throws {
+        var sut: APIMovieRepository!
+        try super.setUpWithError()
+        sut = APIMovieRepository()
+        let expectation = self.expectation(description: "Fetch Movies")
+        
+        sut.fetchMovies(endpoint: .popular) { success in
+            XCTAssertTrue(success, "Fetching movies failed")
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 2) { error in
+            if let error = error {
+                XCTFail("Timeout Error: \(error)")
+            }
+        }
+        print("movies fetched!")
+    }
+    
+    
+    
+//    func testGetTitleOfMovie() throws {
+//        var sut: APIMovieRepository!
+//        try super.setUpWithError()
+//        sut = APIMovieRepository()
+//        
+//        XCTAssertEqual(sut.moviesPopular[0].title, sut.getTitleOfMovie(indexOf: 0, endpoint: .popular))
+//    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
