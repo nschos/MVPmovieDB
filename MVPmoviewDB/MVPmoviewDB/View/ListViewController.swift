@@ -16,7 +16,10 @@ class ListViewController: UIViewController {
     init(presenter: MoviePresenter = MoviePresenter()) {
         self.presenter = presenter
         self.searchController = UISearchController()
-        self.tableView = UITableView()
+        let newTable = UITableView()
+        newTable.accessibilityIdentifier = "tableViewID"
+        self.tableView = newTable
+        self.tableView.accessibilityIdentifier = "tableViewID"
         super.init(nibName: nil, bundle: nil)
         presenter.delegate = self
     }
