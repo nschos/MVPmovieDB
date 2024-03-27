@@ -56,11 +56,18 @@ final class MVPmoviewDBUITestsLaunchTests: XCTestCase {
     }
     
     
-    func testMyThings() {
-        //XCUIApplication().navigationBars["Movies"].staticTexts["Movies"].tap()
+    func testMovieDetailsView(){
+        let app = XCUIApplication()
+        
+        let tableCell = app.tables.children(matching: .cell).element(boundBy: 0).staticTexts["Kung Fu Panda 4"]
+        
+        XCTAssert(tableCell.exists)
+        
+        tableCell.tap()
+        
+        
         
     }
-    
     
     
     func testLaunch() throws {
