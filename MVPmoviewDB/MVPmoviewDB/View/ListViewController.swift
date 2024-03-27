@@ -17,9 +17,9 @@ class ListViewController: UIViewController {
         self.presenter = presenter
         self.searchController = UISearchController()
         let newTable = UITableView()
-        newTable.accessibilityIdentifier = "tableViewID"
+        newTable.accessibilityIdentifier = "CustomTableViewIdentifier"
         self.tableView = newTable
-        self.tableView.accessibilityIdentifier = "tableViewID"
+        self.tableView.accessibilityIdentifier = ""
         super.init(nibName: nil, bundle: nil)
         presenter.delegate = self
     }
